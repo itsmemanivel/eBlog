@@ -1,0 +1,34 @@
+version: '2' # specify docker-compose version
+
+# Define the services/containers to be run
+services:
+  redis:
+    image: redis
+    networks: 
+      - networkingis
+
+  node: #name of the second service
+    build: server-backend # specify the directory of the Dockerfile
+    ports:
+      - "3001:3000" #specify ports forewarding
+      - "3002:3000"
+      - "3003:3000"
+    networks: 
+      - networkingis
+    environment:
+      REDIS_HOST: redis
+
+
+networks: 
+  networkingis:
+    driver: bridge
+
+    
+    # command: ["./wait-for-it.sh","db:6379","--","pm2", "start",  "process.json", "--no-daemon"]   
+
+  
+#     volumes:
+#       - redis_data:/data
+# volumes:  
+#   redis_data:
+      
