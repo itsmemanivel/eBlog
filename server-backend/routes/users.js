@@ -33,7 +33,7 @@ router.post('/register', (req, res, next) => {
    
     }
 
-    User.getUsers(username, function(err, callback){
+    User.getUsers(req.body.username, function(err, callback){
       if(callback){
         // res.json({ success: true , user: callback });
         
