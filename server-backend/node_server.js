@@ -30,7 +30,7 @@ var socialmedia = require('./routes/socialmedia');
 var redisStore = require('connect-redis')(session);
 const axios = require('axios');
 var client = require('./cache');
-
+const port =  process.env.PORT || 4000;
 
 
 
@@ -118,7 +118,7 @@ app.use(methodOverride());
 
 
 //port
-app.listen('3000','0.0.0.0',(err, res)=>{
+app.listen(port,(err, res)=>{
     if(err) throw err;
     console.log('server on port 3000');
 });
